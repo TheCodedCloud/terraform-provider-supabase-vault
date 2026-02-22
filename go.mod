@@ -1,4 +1,4 @@
-module github.com/thecodedcloud/terraform-provider-supabase-vault
+module github.com/TheCodedCloud/terraform-provider-supabase-vault
 
 go 1.24.0
 
