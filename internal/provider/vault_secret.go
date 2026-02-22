@@ -102,14 +102,14 @@ func (r *VaultSecretResource) Configure(ctx context.Context, req resource.Config
 	r.providerData = providerData
 }
 
-// appendManagedByFooter appends a footer to the description indicating the secret is managed by Terraform
+// appendManagedByFooter appends a footer to the description indicating the secret is managed by Terraform.
 func appendManagedByFooter(description string, version string) string {
 	footer := fmt.Sprintf("\n\n---\nManaged by terraform-provider-supabase-vault v%s", version)
-	
+
 	if description == "" {
 		return strings.TrimPrefix(footer, "\n\n")
 	}
-	
+
 	return description + footer
 }
 
@@ -236,13 +236,11 @@ func (r *VaultSecretResource) Read(ctx context.Context, req resource.ReadRequest
 		data.KeyID = types.StringNull()
 	}
 
-	// Remove the managed-by footer from description if present
-	// This allows users to see their original description
+	// Remove the managed-by footer from description if present.
+	// This allows users to see their original description.
 	if description != "" {
 		footer := fmt.Sprintf("\n\n---\nManaged by terraform-provider-supabase-vault v%s", r.providerData.Version)
-		if strings.HasSuffix(description, footer) {
-			description = strings.TrimSuffix(description, footer)
-		}
+		description = strings.TrimSuffix(description, footer)
 		data.Description = types.StringValue(description)
 	} else {
 		data.Description = types.StringNull()
@@ -361,4 +359,3 @@ func (r *VaultSecretResource) ImportState(ctx context.Context, req resource.Impo
 	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("id"), secretID)...)
 	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("name"), secretName)...)
 }
-
