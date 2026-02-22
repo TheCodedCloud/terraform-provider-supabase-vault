@@ -4,7 +4,7 @@ repos:
     hooks:
       - id: golangci-lint
         name: golangci-lint
-        entry: sh -c 'GOFLAGS=-mod=vendor golangci-lint run "$@"' --
+        entry: sh -c 'golangci-lint run "$@"' --
         language: system
         types: [go]
 
