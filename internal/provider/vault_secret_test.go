@@ -225,4 +225,3 @@ resource "supabase-vault_secret" "test" {
 
 	return config
 }
-
