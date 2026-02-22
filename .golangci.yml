@@ -7,6 +7,7 @@ linters:
     - errcheck
     - forcetypeassert
     - godot
+    - govet
     - ineffassign
     - makezero
     - misspell
@@ -16,7 +17,6 @@ linters:
     - unconvert
     - unparam
     - unused
-    - usetesting
   exclusions:
     generated: lax
     presets:
@@ -29,7 +29,6 @@ linters:
       - builtin$
       - examples$
 issues:
-  max-issues-per-linter: 0
   max-same-issues: 0
 formatters:
   enable:
