@@ -1,0 +1,1 @@
+terraform import supabase-vault_secret.api_key "api_key"
